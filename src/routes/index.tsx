@@ -44,34 +44,34 @@ function Index() {
         <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:py-24">
           <div className="space-y-6">
             <p className="text-primary text-xs tracking-[0.25em] uppercase">
-              100% Natural · Grade A
+              100 % Naturligt · Grade A
             </p>
             <h1 className="font-serif text-5xl leading-[1.05] tracking-tight md:text-6xl">
-              Raw shea butter, exactly as the nut made it.
+              Rent sheasmör, precis som nöten gjorde det.
             </h1>
             <p className="text-muted-foreground max-w-md text-lg">
-              Wild harvested, cold pressed and never refined. A single ingredient that softens dry
-              skin, calms irritation and lasts all season.
+              Vildskördat, kallpressat och aldrig raffinerat. En enda ingrediens som mjukgör torr
+              hud, lugnar irritation och räcker hela säsongen.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
                 href="#shop"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center rounded-full px-7 text-sm font-medium transition-colors"
               >
-                Shop the butter
+                Handla sheasmöret
               </a>
               <a
                 href="#about"
                 className="border-border hover:bg-accent inline-flex h-11 items-center rounded-full border px-7 text-sm font-medium transition-colors"
               >
-                Why unrefined
+                Varför oraffinerat
               </a>
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl">
             <img
               src={heroImage}
-              alt="Raw unrefined shea butter in a ceramic bowl beside cracked shea nuts"
+              alt="Rent oraffinerat sheasmör i en keramikskål bredvid knäckta sheanötter"
               width={1600}
               height={1104}
               className="h-full w-full object-cover"
@@ -82,16 +82,20 @@ function Index() {
         <section id="about" className="border-border/60 border-y">
           <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 sm:grid-cols-3">
             {[
-              { icon: Leaf, title: "Wild harvested", body: "Nuts gathered by hand, never farmed." },
+              {
+                icon: Leaf,
+                title: "Vildskördat",
+                body: "Nötter plockade för hand, aldrig odlade.",
+              },
               {
                 icon: Droplets,
-                title: "Cold pressed",
-                body: "No heat, no solvents, no bleaching agents.",
+                title: "Kallpressat",
+                body: "Ingen värme, inga lösningsmedel, inga blekmedel.",
               },
               {
                 icon: Sun,
-                title: "Unrefined Grade A",
-                body: "Vitamins A, E and F left fully intact.",
+                title: "Oraffinerat Grade A",
+                body: "Vitamin A, E och F helt bevarade.",
               },
             ].map(({ icon: Icon, title, body }) => (
               <div key={title} className="space-y-3">
