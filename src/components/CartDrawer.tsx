@@ -50,11 +50,11 @@ export const CartDrawer = () => {
       </SheetTrigger>
       <SheetContent className="flex h-full w-full flex-col sm:max-w-lg">
         <SheetHeader className="flex-shrink-0">
-          <SheetTitle>Your bag</SheetTitle>
+          <SheetTitle>Din varukorg</SheetTitle>
           <SheetDescription>
             {totalItems === 0
-              ? "Your bag is empty"
-              : `${totalItems} item${totalItems !== 1 ? "s" : ""} in your bag`}
+              ? "Din varukorg är tom"
+              : `${totalItems} ${totalItems !== 1 ? "varor" : "vara"} i varukorgen`}
           </SheetDescription>
         </SheetHeader>
         <div className="flex min-h-0 flex-1 flex-col px-4 pt-2 pb-4">
@@ -62,7 +62,7 @@ export const CartDrawer = () => {
             <div className="flex flex-1 items-center justify-center">
               <div className="text-center">
                 <ShoppingBag className="text-muted-foreground mx-auto mb-4 h-12 w-12" />
-                <p className="text-muted-foreground">Your bag is empty</p>
+                <p className="text-muted-foreground">Din varukorg är tom</p>
               </div>
             </div>
           ) : (
@@ -125,7 +125,7 @@ export const CartDrawer = () => {
               </div>
               <div className="bg-background flex-shrink-0 space-y-4 border-t pt-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-lg font-semibold">Total</span>
+                  <span className="text-lg font-semibold">Totalt</span>
                   <span className="text-xl font-bold">{formatPrice(totalPrice, currency)}</span>
                 </div>
                 <Button
@@ -139,7 +139,7 @@ export const CartDrawer = () => {
                   ) : (
                     <>
                       <ExternalLink className="mr-2 h-4 w-4" />
-                      Checkout with Shopify
+                      Till kassan
                     </>
                   )}
                 </Button>

@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
       quantity: 1,
       selectedOptions: selectedVariant.selectedOptions || [],
     });
-    toast.success(`${product.node.title} added to your bag`, { position: "top-center" });
+    toast.success(`${product.node.title} lades i varukorgen`, { position: "top-center" });
   };
 
   return (
@@ -51,7 +51,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
             )}
           </span>
           <Button onClick={handleAddToCart} disabled={isLoading || !selectedVariant} size="sm">
-            {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Add to bag"}
+            {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Lägg i varukorgen"}
           </Button>
         </div>
       </div>
