@@ -10,17 +10,17 @@ import heroImage from "@/assets/hero-shea.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Karité — Unrefined Wild-Harvested Shea Butter" },
+      { title: "Karité — Oraffinerat vildskördat sheasmör" },
       {
         name: "description",
         content:
-          "Grade A unrefined shea butter, wild harvested and cold pressed. One ingredient, nothing else. Shop the raw karité ritual.",
+          "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat. Handla den rena karité-ritualen.",
       },
-      { property: "og:title", content: "Karité — Unrefined Wild-Harvested Shea Butter" },
+      { property: "og:title", content: "Karité — Oraffinerat vildskördat sheasmör" },
       {
         property: "og:description",
         content:
-          "Grade A unrefined shea butter, wild harvested and cold pressed. One ingredient, nothing else.",
+          "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -44,34 +44,34 @@ function Index() {
         <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:py-24">
           <div className="space-y-6">
             <p className="text-primary text-xs tracking-[0.25em] uppercase">
-              100% Natural · Grade A
+              100 % Naturligt · Grade A
             </p>
             <h1 className="font-serif text-5xl leading-[1.05] tracking-tight md:text-6xl">
-              Raw shea butter, exactly as the nut made it.
+              Rent sheasmör, precis som nöten gjorde det.
             </h1>
             <p className="text-muted-foreground max-w-md text-lg">
-              Wild harvested, cold pressed and never refined. A single ingredient that softens dry
-              skin, calms irritation and lasts all season.
+              Vildskördat, kallpressat och aldrig raffinerat. En enda ingrediens som mjukgör torr
+              hud, lugnar irritation och räcker hela säsongen.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
                 href="#shop"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center rounded-full px-7 text-sm font-medium transition-colors"
               >
-                Shop the butter
+                Handla sheasmöret
               </a>
               <a
                 href="#about"
                 className="border-border hover:bg-accent inline-flex h-11 items-center rounded-full border px-7 text-sm font-medium transition-colors"
               >
-                Why unrefined
+                Varför oraffinerat
               </a>
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl">
             <img
               src={heroImage}
-              alt="Raw unrefined shea butter in a ceramic bowl beside cracked shea nuts"
+              alt="Rent oraffinerat sheasmör i en keramikskål bredvid knäckta sheanötter"
               width={1600}
               height={1104}
               className="h-full w-full object-cover"
@@ -82,16 +82,20 @@ function Index() {
         <section id="about" className="border-border/60 border-y">
           <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 sm:grid-cols-3">
             {[
-              { icon: Leaf, title: "Wild harvested", body: "Nuts gathered by hand, never farmed." },
+              {
+                icon: Leaf,
+                title: "Vildskördat",
+                body: "Nötter plockade för hand, aldrig odlade.",
+              },
               {
                 icon: Droplets,
-                title: "Cold pressed",
-                body: "No heat, no solvents, no bleaching agents.",
+                title: "Kallpressat",
+                body: "Ingen värme, inga lösningsmedel, inga blekmedel.",
               },
               {
                 icon: Sun,
-                title: "Unrefined Grade A",
-                body: "Vitamins A, E and F left fully intact.",
+                title: "Oraffinerat Grade A",
+                body: "Vitamin A, E och F helt bevarade.",
               },
             ].map(({ icon: Icon, title, body }) => (
               <div key={title} className="space-y-3">
@@ -105,8 +109,8 @@ function Index() {
 
         <section id="shop" className="mx-auto max-w-6xl px-6 py-16">
           <div className="mb-10 flex items-end justify-between">
-            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">The collection</h2>
-            <p className="text-muted-foreground text-sm">Shipped from our own store</p>
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">Kollektionen</h2>
+            <p className="text-muted-foreground text-sm">Skickas från vår egen butik</p>
           </div>
 
           {isLoading ? (
@@ -121,16 +125,16 @@ function Index() {
             </div>
           ) : (
             <div className="border-border rounded-2xl border border-dashed py-20 text-center">
-              <p className="text-muted-foreground">No products found</p>
+              <p className="text-muted-foreground">Inga produkter hittades</p>
             </div>
           )}
         </section>
 
         <section id="ritual" className="mx-auto max-w-3xl px-6 pb-8 text-center">
-          <h2 className="font-serif text-3xl tracking-tight">The ritual</h2>
+          <h2 className="font-serif text-3xl tracking-tight">Ritualen</h2>
           <p className="text-muted-foreground mt-4">
-            Warm a small amount between your palms until it melts, then press into damp skin. Best
-            on elbows, heels, hands and anywhere winter has been unkind.
+            Värm en liten mängd mellan handflatorna tills den smälter och massera in i fuktig hud.
+            Bäst på armbågar, hälar, händer och överallt där vintern varit hård.
           </p>
         </section>
       </main>

@@ -14,15 +14,15 @@ export const Route = createFileRoute("/product/$handle")({
     const name = params.handle.replace(/-/g, " ");
     return {
       meta: [
-        { title: `${name} — Karité Shea Butter` },
+        { title: `${name} — Karité sheasmör` },
         {
           name: "description",
-          content: `Buy ${name}: unrefined, wild-harvested Grade A shea butter from Karité.`,
+          content: `Köp ${name}: oraffinerat, vildskördat sheasmör av Grade A från Karité.`,
         },
-        { property: "og:title", content: `${name} — Karité Shea Butter` },
+        { property: "og:title", content: `${name} — Karité sheasmör` },
         {
           property: "og:description",
-          content: `Buy ${name}: unrefined, wild-harvested Grade A shea butter from Karité.`,
+          content: `Köp ${name}: oraffinerat, vildskördat sheasmör av Grade A från Karité.`,
         },
         { property: "og:type", content: "product" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -58,7 +58,7 @@ function ProductPage() {
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
     });
-    toast.success(`${product.node.title} added to your bag`, { position: "top-center" });
+    toast.success(`${product.node.title} lades i varukorgen`, { position: "top-center" });
   };
 
   return (
@@ -69,7 +69,7 @@ function ProductPage() {
           to="/"
           className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm"
         >
-          <ArrowLeft className="h-4 w-4" /> Back to shop
+          <ArrowLeft className="h-4 w-4" /> Tillbaka till butiken
         </Link>
 
         {isLoading ? (
@@ -77,7 +77,7 @@ function ProductPage() {
             <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
           </div>
         ) : !product ? (
-          <p className="text-muted-foreground py-24 text-center">Product not found</p>
+          <p className="text-muted-foreground py-24 text-center">Produkten hittades inte</p>
         ) : (
           <div className="grid gap-12 md:grid-cols-2">
             <div className="bg-muted overflow-hidden rounded-3xl">
@@ -105,7 +105,7 @@ function ProductPage() {
 
               {variants.length > 1 && (
                 <div className="space-y-2">
-                  <p className="text-sm font-medium">Options</p>
+                  <p className="text-sm font-medium">Alternativ</p>
                   <div className="flex flex-wrap gap-2">
                     {variants.map((v, i) => (
                       <button
@@ -134,9 +134,9 @@ function ProductPage() {
                 {isAdding ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : variant?.availableForSale ? (
-                  "Add to bag"
+                  "Lägg i varukorgen"
                 ) : (
-                  "Sold out"
+                  "Slutsåld"
                 )}
               </Button>
             </div>

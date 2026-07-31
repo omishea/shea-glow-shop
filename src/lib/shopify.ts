@@ -135,7 +135,7 @@ export async function fetchProductByHandle(handle: string): Promise<ShopifyProdu
 export function formatPrice(amount: string | number, currencyCode: string) {
   const value = typeof amount === "string" ? parseFloat(amount) : amount;
   try {
-    return new Intl.NumberFormat("en-US", {
+    return new Intl.NumberFormat("sv-SE", {
       style: "currency",
       currency: currencyCode,
       maximumFractionDigits: 2,
