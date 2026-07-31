@@ -109,8 +109,8 @@ function Index() {
 
         <section id="shop" className="mx-auto max-w-6xl px-6 py-16">
           <div className="mb-10 flex items-end justify-between">
-            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">The collection</h2>
-            <p className="text-muted-foreground text-sm">Shipped from our own store</p>
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">Kollektionen</h2>
+            <p className="text-muted-foreground text-sm">Skickas från vår egen butik</p>
           </div>
 
           {isLoading ? (
@@ -125,16 +125,16 @@ function Index() {
             </div>
           ) : (
             <div className="border-border rounded-2xl border border-dashed py-20 text-center">
-              <p className="text-muted-foreground">No products found</p>
+              <p className="text-muted-foreground">Inga produkter hittades</p>
             </div>
           )}
         </section>
 
         <section id="ritual" className="mx-auto max-w-3xl px-6 pb-8 text-center">
-          <h2 className="font-serif text-3xl tracking-tight">The ritual</h2>
+          <h2 className="font-serif text-3xl tracking-tight">Ritualen</h2>
           <p className="text-muted-foreground mt-4">
-            Warm a small amount between your palms until it melts, then press into damp skin. Best
-            on elbows, heels, hands and anywhere winter has been unkind.
+            Värm en liten mängd mellan handflatorna tills den smälter och massera in i fuktig hud.
+            Bäst på armbågar, hälar, händer och överallt där vintern varit hård.
           </p>
         </section>
       </main>
