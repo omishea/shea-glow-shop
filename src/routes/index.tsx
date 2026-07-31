@@ -10,17 +10,17 @@ import heroImage from "@/assets/hero-shea.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Karité — Unrefined Wild-Harvested Shea Butter" },
+      { title: "Karité — Oraffinerat vildskördat sheasmör" },
       {
         name: "description",
         content:
-          "Grade A unrefined shea butter, wild harvested and cold pressed. One ingredient, nothing else. Shop the raw karité ritual.",
+          "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat. Handla den rena karité-ritualen.",
       },
-      { property: "og:title", content: "Karité — Unrefined Wild-Harvested Shea Butter" },
+      { property: "og:title", content: "Karité — Oraffinerat vildskördat sheasmör" },
       {
         property: "og:description",
         content:
-          "Grade A unrefined shea butter, wild harvested and cold pressed. One ingredient, nothing else.",
+          "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
