@@ -10,10 +10,10 @@ export function SiteHeader() {
         </Link>
         <nav className="text-muted-foreground hidden gap-8 text-sm sm:flex">
           <a href="/#shop" className="hover:text-foreground transition-colors">
-            Shop
+            Butik
           </a>
           <a href="/#about" className="hover:text-foreground transition-colors">
-            About
+            Om oss
           </a>
           <a href="/#ritual" className="hover:text-foreground transition-colors">
             Ritual
@@ -30,7 +30,7 @@ export function SiteFooter() {
     <footer className="border-border/60 mt-24 border-t">
       <div className="text-muted-foreground mx-auto flex max-w-6xl flex-col gap-2 px-6 py-10 text-sm sm:flex-row sm:items-center sm:justify-between">
         <p className="font-serif text-foreground text-base">Karité</p>
-        <p>Unrefined, wild-harvested shea butter. Nothing else.</p>
+        <p>Oraffinerat, vildskördat sheasmör. Inget annat.</p>
       </div>
     </footer>
   );
