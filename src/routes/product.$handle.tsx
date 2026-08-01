@@ -16,6 +16,13 @@ const sections = [
   { id: "leverans", label: "Leverans", icon: Truck },
 ] as const;
 
+function cleanDescription(description: string | null): string {
+  if (!description) return "";
+  const usageIndex = description.toLowerCase().indexOf("användning");
+  if (usageIndex === -1) return description;
+  return description.slice(0, usageIndex).trim();
+}
+
 export const Route = createFileRoute("/product/$handle")({
   head: ({ params }) => {
     const name = params.handle.replace(/-/g, " ");
