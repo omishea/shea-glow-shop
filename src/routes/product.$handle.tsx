@@ -207,7 +207,9 @@ function ProductPage() {
 
                 <section
                   id="anvandning"
-                  ref={(el) => (sectionRefs.current.anvandning = el)}
+                  ref={(el) => {
+                    sectionRefs.current["anvandning"] = el;
+                  }}
                   className="scroll-mt-32"
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Användning</h2>
@@ -222,7 +224,9 @@ function ProductPage() {
 
                 <section
                   id="ingredienser"
-                  ref={(el) => (sectionRefs.current.ingredienser = el)}
+                  ref={(el) => {
+                    sectionRefs.current["ingredienser"] = el;
+                  }}
                   className="scroll-mt-32"
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Ingredienser</h2>
@@ -235,7 +239,9 @@ function ProductPage() {
 
                 <section
                   id="leverans"
-                  ref={(el) => (sectionRefs.current.leverans = el)}
+                  ref={(el) => {
+                    sectionRefs.current["leverans"] = el;
+                  }}
                   className="scroll-mt-32"
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Leverans</h2>
