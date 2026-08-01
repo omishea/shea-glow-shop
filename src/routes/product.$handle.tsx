@@ -16,6 +16,13 @@ const sections = [
   { id: "leverans", label: "Leverans", icon: Truck },
 ] as const;
 
+function cleanDescription(description: string | null): string {
+  if (!description) return "";
+  const usageIndex = description.toLowerCase().indexOf("användning");
+  if (usageIndex === -1) return description;
+  return description.slice(0, usageIndex).trim();
+}
+
 export const Route = createFileRoute("/product/$handle")({
   head: ({ params }) => {
     const name = params.handle.replace(/-/g, " ");
@@ -195,7 +202,7 @@ function ProductPage() {
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Produktbeskrivning</h2>
                   <div className="text-muted-foreground max-w-3xl whitespace-pre-line leading-relaxed">
-                    {product.node.description || (
+                    {cleanDescription(product.node.description) || (
                       <p>
                         Vårt sheasmör är oraffinerat och kallpressat för att bevara alla naturliga
                         näringsämnen. Det är rikt på vitamin A och E och passar torr hud, läppar,
@@ -252,8 +259,7 @@ function ProductPage() {
                     </p>
                     <ul className="list-disc space-y-1 pl-5">
                       <li>Leveranstid: 2–5 arbetsdagar inom Sverige.</li>
-                      <li>Frakt: Beräknas i kassan utifrån vikt och leveransadress.</li>
-                      <li>Fri frakt på beställningar över 500 kr.</li>
+                      <li>Fri frakt</li>
                       <li>Du får ett spårningsnummer när paketet har skickats.</li>
                     </ul>
                   </div>
