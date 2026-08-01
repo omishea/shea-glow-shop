@@ -188,7 +188,9 @@ function ProductPage() {
               <div className="mt-8 space-y-16">
                 <section
                   id="beskrivning"
-                  ref={(el) => (sectionRefs.current.beskrivning = el)}
+                  ref={(el) => {
+                    sectionRefs.current["beskrivning"] = el;
+                  }}
                   className="scroll-mt-32"
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Produktbeskrivning</h2>
