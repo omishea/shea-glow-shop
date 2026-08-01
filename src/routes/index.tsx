@@ -79,6 +79,29 @@ function Index() {
           </div>
         </section>
 
+        <section id="shop" className="mx-auto max-w-6xl px-6 py-16">
+          <div className="mb-10 flex items-end justify-between">
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">Produkter</h2>
+            <p className="text-muted-foreground text-sm">Skickas från vår egen butik</p>
+          </div>
+
+          {isLoading ? (
+            <div className="flex justify-center py-20">
+              <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
+            </div>
+          ) : products && products.length > 0 ? (
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {products.map((product) => (
+                <ProductCard key={product.node.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <div className="border-border rounded-2xl border border-dashed py-20 text-center">
+              <p className="text-muted-foreground">Inga produkter hittades</p>
+            </div>
+          )}
+        </section>
+
         <section id="about" className="border-border/60 border-y">
           <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 sm:grid-cols-3">
             {[
@@ -105,29 +128,6 @@ function Index() {
               </div>
             ))}
           </div>
-        </section>
-
-        <section id="shop" className="mx-auto max-w-6xl px-6 py-16">
-          <div className="mb-10 flex items-end justify-between">
-            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">Kollektionen</h2>
-            <p className="text-muted-foreground text-sm">Skickas från vår egen butik</p>
-          </div>
-
-          {isLoading ? (
-            <div className="flex justify-center py-20">
-              <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
-            </div>
-          ) : products && products.length > 0 ? (
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {products.map((product) => (
-                <ProductCard key={product.node.id} product={product} />
-              ))}
-            </div>
-          ) : (
-            <div className="border-border rounded-2xl border border-dashed py-20 text-center">
-              <p className="text-muted-foreground">Inga produkter hittades</p>
-            </div>
-          )}
         </section>
 
         <section id="ritual" className="mx-auto max-w-3xl px-6 pb-8 text-center">
