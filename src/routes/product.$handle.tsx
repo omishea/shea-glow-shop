@@ -14,15 +14,15 @@ export const Route = createFileRoute("/product/$handle")({
     const name = params.handle.replace(/-/g, " ");
     return {
       meta: [
-        { title: `${name} — Karité sheasmör` },
+        { title: `${name} — Shea Org sheasmör` },
         {
           name: "description",
-          content: `Köp ${name}: oraffinerat, vildskördat sheasmör av Grade A från Karité.`,
+          content: `Köp ${name}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`,
         },
-        { property: "og:title", content: `${name} — Karité sheasmör` },
+        { property: "og:title", content: `${name} — Shea Org sheasmör` },
         {
           property: "og:description",
-          content: `Köp ${name}: oraffinerat, vildskördat sheasmör av Grade A från Karité.`,
+          content: `Köp ${name}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`,
         },
         { property: "og:type", content: "product" },
         { name: "twitter:card", content: "summary_large_image" },

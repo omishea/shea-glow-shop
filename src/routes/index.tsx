@@ -10,13 +10,13 @@ import heroImage from "@/assets/hero-shea.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Karité — Oraffinerat vildskördat sheasmör" },
+      { title: "Shea Org — Oraffinerat vildskördat sheasmör" },
       {
         name: "description",
         content:
           "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat. Handla den rena karité-ritualen.",
       },
-      { property: "og:title", content: "Karité — Oraffinerat vildskördat sheasmör" },
+      { property: "og:title", content: "Shea Org — Oraffinerat vildskördat sheasmör" },
       {
         property: "og:description",
         content:

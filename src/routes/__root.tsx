@@ -79,10 +79,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Karité — Oraffinerat sheasmör" },
+      { title: "Shea Org — Oraffinerat sheasmör" },
       { name: "description", content: "Vildskördat, kallpressat sheasmör av Grade A." },
-      { name: "author", content: "Karité" },
-      { property: "og:title", content: "Karité — Oraffinerat sheasmör" },
+      { name: "author", content: "Shea Org" },
+      { property: "og:title", content: "Shea Org — Oraffinerat sheasmör" },
       { property: "og:description", content: "Vildskördat, kallpressat sheasmör av Grade A." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
