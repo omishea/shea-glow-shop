@@ -252,8 +252,7 @@ function ProductPage() {
                     </p>
                     <ul className="list-disc space-y-1 pl-5">
                       <li>Leveranstid: 2–5 arbetsdagar inom Sverige.</li>
-                      <li>Frakt: Beräknas i kassan utifrån vikt och leveransadress.</li>
-                      <li>Fri frakt på beställningar över 500 kr.</li>
+                      <li>Fri frakt</li>
                       <li>Du får ett spårningsnummer när paketet har skickats.</li>
                     </ul>
                   </div>
