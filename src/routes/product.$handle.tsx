@@ -202,7 +202,7 @@ function ProductPage() {
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Produktbeskrivning</h2>
                   <div className="text-muted-foreground max-w-3xl whitespace-pre-line leading-relaxed">
-                    {product.node.description || (
+                    {cleanDescription(product.node.description) || (
                       <p>
                         Vårt sheasmör är oraffinerat och kallpressat för att bevara alla naturliga
                         näringsämnen. Det är rikt på vitamin A och E och passar torr hud, läppar,
