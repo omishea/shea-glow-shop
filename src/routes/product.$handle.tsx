@@ -1,13 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { useCartSync } from "@/hooks/useCartSync";
 import { useCartStore } from "@/stores/cartStore";
 import { Button } from "@/components/ui/button";
-import { Loader2, ArrowLeft } from "lucide-react";
+import { Loader2, ArrowLeft, Package, Leaf, Truck, Sparkles } from "lucide-react";
 import { toast } from "sonner";
+
+const sections = [
+  { id: "beskrivning", label: "Produktbeskrivning", icon: Package },
+  { id: "anvandning", label: "Användning", icon: Sparkles },
+  { id: "ingredienser", label: "Ingredienser", icon: Leaf },
+  { id: "leverans", label: "Leverans", icon: Truck },
+] as const;
 
 export const Route = createFileRoute("/product/$handle")({
   head: ({ params }) => {
