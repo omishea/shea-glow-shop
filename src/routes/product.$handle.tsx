@@ -29,8 +29,19 @@ function truncate(text: string, max = 155): string {
   return flat.length <= max ? flat : `${flat.slice(0, max - 1).trimEnd()}…`;
 }
 
+/**
+ * Handles that ship a pre-built 1200x630 share card in /public, used when the
+ * Shopify source image is too small to be served at full 1.91:1 preview size.
+ */
+const SOCIAL_CARDS: Record<string, string> = {
+  "pure-shea-butter-beige-organic-unrefined":
+    "/og-product-pure-shea-butter-beige-organic-unrefined.jpg",
+};
+
 /** Shopify CDN serves public, unauthenticated https images and supports resizing. */
-function socialImageUrl(url: string | undefined): string {
+function socialImageUrl(handle: string, url: string | undefined): string {
+  const card = SOCIAL_CARDS[handle];
+  if (card) return `${SITE_URL}${card}`;
   if (!url) return `${SITE_URL}/og-cover.jpg`;
   try {
     const parsed = new URL(url);
@@ -42,6 +53,7 @@ function socialImageUrl(url: string | undefined): string {
     return `${SITE_URL}/og-cover.jpg`;
   }
 }
+
 
 export const Route = createFileRoute("/product/$handle")({
   loader: ({ params }) => fetchProductByHandle(params.handle),
