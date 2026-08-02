@@ -129,8 +129,9 @@ function ProductPage() {
   const [activeSection, setActiveSection] = useState<string>(sections[0].id);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
-  const product = Route.useLoaderData();
+  const product = Route.useLoaderData() as ShopifyProduct | null;
   const isLoading = false;
+
 
 
   const variants = product?.node.variants.edges ?? [];
