@@ -10,5 +10,10 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: Facebot
+Allow: /
+
 User-agent: *
 Allow: /
+
+Sitemap: https://shea-glow-shop.lovable.app/sitemap.xml
