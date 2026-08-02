@@ -69,7 +69,7 @@ export const Route = createFileRoute("/product/$handle")({
         )
       : `Köp ${fallbackName}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`;
     const imageNode = product?.node.images.edges[0]?.node;
-    const image = socialImageUrl(imageNode?.url);
+    const image = socialImageUrl(params.handle, imageNode?.url);
     const imageAlt = imageNode?.altText ?? product?.node.title ?? "Shea Org sheasmör";
 
     const meta = [
