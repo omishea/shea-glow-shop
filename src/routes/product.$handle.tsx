@@ -1,13 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
 import { useState, useRef } from "react";
-import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
+import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { useCartSync } from "@/hooks/useCartSync";
 import { useCartStore } from "@/stores/cartStore";
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowLeft, Package, Leaf, Truck, Sparkles } from "lucide-react";
 import { toast } from "sonner";
+
+const SITE_URL = "https://shea-glow-shop.lovable.app";
 
 const sections = [
   { id: "beskrivning", label: "Produktbeskrivning", icon: Package },
@@ -23,31 +24,116 @@ function cleanDescription(description: string | null): string {
   return description.slice(0, usageIndex).trim();
 }
 
+function truncate(text: string, max = 155): string {
+  const flat = text.replace(/\s+/g, " ").trim();
+  return flat.length <= max ? flat : `${flat.slice(0, max - 1).trimEnd()}…`;
+}
+
+/**
+ * Handles that ship a pre-built 1200x630 share card in /public, used when the
+ * Shopify source image is too small to be served at full 1.91:1 preview size.
+ */
+const SOCIAL_CARDS: Record<string, string> = {
+  "pure-shea-butter-beige-organic-unrefined":
+    "/og-product-pure-shea-butter-beige-organic-unrefined.jpg",
+};
+
+/** Shopify CDN serves public, unauthenticated https images and supports resizing. */
+function socialImageUrl(handle: string, url: string | undefined): string {
+  const card = SOCIAL_CARDS[handle];
+  if (card) return `${SITE_URL}${card}`;
+  if (!url) return `${SITE_URL}/og-cover.jpg`;
+  try {
+    const parsed = new URL(url);
+    parsed.searchParams.set("width", "1200");
+    parsed.searchParams.set("height", "630");
+    parsed.searchParams.set("crop", "center");
+    return parsed.toString();
+  } catch {
+    return `${SITE_URL}/og-cover.jpg`;
+  }
+}
+
+
 export const Route = createFileRoute("/product/$handle")({
-  head: ({ params }) => {
-    const name = params.handle.replace(/-/g, " ");
+  loader: ({ params }) => fetchProductByHandle(params.handle),
+  head: ({ params, loaderData }) => {
+    const product = loaderData as ShopifyProduct | null | undefined;
+    const url = `${SITE_URL}/product/${params.handle}`;
+    const fallbackName = params.handle.replace(/-/g, " ");
+    const title = product ? `${product.node.title} — Shea Org` : `${fallbackName} — Shea Org`;
+    const description = product
+      ? truncate(
+          cleanDescription(product.node.description) ||
+            `Köp ${product.node.title}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`,
+        )
+      : `Köp ${fallbackName}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`;
+    const imageNode = product?.node.images.edges[0]?.node;
+    const image = socialImageUrl(params.handle, imageNode?.url);
+    const imageAlt = imageNode?.altText ?? product?.node.title ?? "Shea Org sheasmör";
+
+    const meta = [
+      { title },
+      { name: "description", content: description },
+      { property: "og:site_name", content: "Shea Org" },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "product" },
+      { property: "og:url", content: url },
+      { property: "og:locale", content: "sv_SE" },
+      { property: "og:image", content: image },
+      { property: "og:image:secure_url", content: image },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:alt", content: imageAlt },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: image },
+      { name: "twitter:image:alt", content: imageAlt },
+    ];
+
+    const firstVariant = product?.node.variants.edges[0]?.node;
+
     return {
-      meta: [
-        { title: `${name} — Shea Org sheasmör` },
-        {
-          name: "description",
-          content: `Köp ${name}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`,
-        },
-        { property: "og:title", content: `${name} — Shea Org sheasmör` },
-        {
-          property: "og:description",
-          content: `Köp ${name}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`,
-        },
-        { property: "og:type", content: "product" },
-        { name: "twitter:card", content: "summary_large_image" },
-      ],
+      meta,
+      links: [{ rel: "canonical", href: url }],
+      scripts: product
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: product.node.title,
+                description,
+                image: [image],
+                brand: { "@type": "Brand", name: "Shea Org" },
+                url,
+                ...(firstVariant
+                  ? {
+                      offers: {
+                        "@type": "Offer",
+                        url,
+                        price: firstVariant.price.amount,
+                        priceCurrency: firstVariant.price.currencyCode,
+                        availability: firstVariant.availableForSale
+                          ? "https://schema.org/InStock"
+                          : "https://schema.org/OutOfStock",
+                      },
+                    }
+                  : {}),
+              }),
+            },
+          ]
+        : undefined,
     };
   },
   component: ProductPage,
 });
 
 function ProductPage() {
-  const { handle } = Route.useParams();
   useCartSync();
   const addItem = useCartStore((s) => s.addItem);
   const isAdding = useCartStore((s) => s.isLoading);
@@ -55,10 +141,10 @@ function ProductPage() {
   const [activeSection, setActiveSection] = useState<string>(sections[0].id);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
-  const { data: product, isLoading } = useQuery({
-    queryKey: ["shopify-product", handle],
-    queryFn: () => fetchProductByHandle(handle),
-  });
+  const product = Route.useLoaderData() as ShopifyProduct | null;
+  const isLoading = false;
+
+
 
   const variants = product?.node.variants.edges ?? [];
   const variant = variants[variantIndex]?.node;

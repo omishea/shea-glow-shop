@@ -7,27 +7,55 @@ import { useCartSync } from "@/hooks/useCartSync";
 import { Loader2, Leaf, Droplets, Sun } from "lucide-react";
 import heroImage from "@/assets/hero-shea.jpg";
 
+const SITE_URL = "https://shea-glow-shop.lovable.app";
+const OG_IMAGE = `${SITE_URL}/og-cover.jpg`;
+const HOME_TITLE = "Shea Org — Oraffinerat vildskördat sheasmör";
+const HOME_DESCRIPTION =
+  "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Shea Org — Oraffinerat vildskördat sheasmör" },
-      {
-        name: "description",
-        content:
-          "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat. Handla den rena karité-ritualen.",
-      },
-      { property: "og:title", content: "Shea Org — Oraffinerat vildskördat sheasmör" },
-      {
-        property: "og:description",
-        content:
-          "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat.",
-      },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESCRIPTION },
+      { property: "og:site_name", content: "Shea Org" },
+      { property: "og:title", content: HOME_TITLE },
+      { property: "og:description", content: HOME_DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:locale", content: "sv_SE" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:secure_url", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:type", content: "image/jpeg" },
+      {
+        property: "og:image:alt",
+        content: "Oraffinerat sheasmör i en keramikskål bredvid knäckta sheanötter",
+      },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: HOME_TITLE },
+      { name: "twitter:description", content: HOME_DESCRIPTION },
+      { name: "twitter:image", content: OG_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Shea Org",
+          url: `${SITE_URL}/`,
+          inLanguage: "sv-SE",
+          description: HOME_DESCRIPTION,
+        }),
+      },
     ],
   }),
   component: Index,
 });
+
 
 function Index() {
   useCartSync();

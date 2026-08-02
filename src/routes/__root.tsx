@@ -85,7 +85,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Shea Org — Oraffinerat sheasmör" },
       { property: "og:description", content: "Vildskördat, kallpressat sheasmör av Grade A." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Shea Org" },
+      { property: "og:locale", content: "sv_SE" },
       { name: "twitter:card", content: "summary_large_image" },
+
     ],
     links: [
       {
