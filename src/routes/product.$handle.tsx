@@ -7,6 +7,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowLeft, Package, Leaf, Truck, Sparkles } from "lucide-react";
 import { toast } from "sonner";
+import { getProductContent } from "@/lib/product-content";
 
 const SITE_URL = "https://shea-glow-shop.lovable.app";
 
@@ -61,16 +62,17 @@ export const Route = createFileRoute("/product/$handle")({
     const product = loaderData as ShopifyProduct | null | undefined;
     const url = `${SITE_URL}/product/${params.handle}`;
     const fallbackName = params.handle.replace(/-/g, " ");
+    const content = getProductContent(params.handle);
     const title = product ? `${product.node.title} — Shea Org` : `${fallbackName} — Shea Org`;
     const description = product
       ? truncate(
           cleanDescription(product.node.description) ||
-            `Köp ${product.node.title}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`,
+            `Köp ${product.node.title}: ${content.metaSummary}.`,
         )
-      : `Köp ${fallbackName}: oraffinerat, vildskördat sheasmör av Grade A från Shea Org.`;
+      : `Köp ${fallbackName}: ${content.metaSummary}.`;
     const imageNode = product?.node.images.edges[0]?.node;
     const image = socialImageUrl(params.handle, imageNode?.url);
-    const imageAlt = imageNode?.altText ?? product?.node.title ?? "Shea Org sheasmör";
+    const imageAlt = imageNode?.altText ?? product?.node.title ?? "Shea Org";
 
     const meta = [
       { title },
