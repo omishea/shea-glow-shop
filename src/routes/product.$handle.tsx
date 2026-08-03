@@ -313,13 +313,7 @@ function ProductPage() {
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Produktbeskrivning</h2>
                   <div className="text-muted-foreground max-w-3xl whitespace-pre-line leading-relaxed">
-                    {cleanDescription(product.node.description) || (
-                      <p>
-                        Vårt sheasmör är oraffinerat och kallpressat för att bevara alla naturliga
-                        näringsämnen. Det är rikt på vitamin A och E och passar torr hud, läppar,
-                        armbågar, hälar och hår.
-                      </p>
-                    )}
+                    {cleanDescription(product.node.description) || <p>{content.tagline}</p>}
                   </div>
                 </section>
 
@@ -332,11 +326,9 @@ function ProductPage() {
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Användning</h2>
                   <ul className="text-muted-foreground max-w-3xl list-disc space-y-2 pl-5 leading-relaxed">
-                    <li>Värm en liten mängd mellan handflatorna tills den smälter.</li>
-                    <li>Massera in i fuktig hud efter dusch eller bad.</li>
-                    <li>Använd på armbågar, knän, händer, fötter och läppar.</li>
-                    <li>Fungerar även som hårinpackning för torra toppar.</li>
-                    <li>Bra som bas för hemmagjorda kropps- och läppvårdsprodukter.</li>
+                    {content.usage.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
                   </ul>
                 </section>
 
@@ -349,9 +341,10 @@ function ProductPage() {
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Ingredienser</h2>
                   <p className="text-muted-foreground max-w-3xl leading-relaxed">
-                    <span className="text-foreground font-medium">100 % Butyrospermum Parkii Butter</span>{" "}
-                    (oraffinerat sheasmör). Ingen doft, inga konserveringsmedel, inga färgämnen och
-                    inga mineraloljor. Endast rent sheasmör från vildväxande sheaträd.
+                    <span className="text-foreground font-medium">
+                      {content.ingredients.highlight}
+                    </span>{" "}
+                    {content.ingredients.body}
                   </p>
                 </section>
 
@@ -364,10 +357,8 @@ function ProductPage() {
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Leverans</h2>
                   <div className="text-muted-foreground max-w-3xl space-y-3 leading-relaxed">
-                    <p>
-                      Vi skickar ditt sheasmör inom 1–2 arbetsdagar. Leveransen sker direkt från
-                      vårt lager med pålitliga fraktpartners.
-                    </p>
+                    <p>{content.shippingIntro}</p>
+
                     <ul className="list-disc space-y-1 pl-5">
                       <li>Leveranstid: 2–5 arbetsdagar inom Sverige.</li>
                       <li>Fri frakt</li>
