@@ -15,6 +15,7 @@ export default defineTool({
       .optional()
       .describe("Optional Shopify search query to filter products, e.g. 'sheasmör'."),
   },
+  outputSchema: { products: z.array(z.record(z.string(), z.unknown())) },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ limit, query }) => {
     const products = await listProducts(limit ?? 20, query);

@@ -15,6 +15,7 @@ export default defineTool({
       .min(1)
       .describe("The product handle, e.g. 'pure-shea-butter-beige-organic-unrefined'."),
   },
+  outputSchema: { product: z.record(z.string(), z.unknown()) },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ handle }) => {
     const product = await getProductByHandle(handle);

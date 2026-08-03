@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 
 import { SITE_URL } from "../shopify";
 
@@ -8,6 +9,15 @@ export default defineTool({
   description:
     "Get general information about the Shea Org webshop: what it sells, shipping policy and useful links.",
   inputSchema: {},
+  outputSchema: {
+    name: z.string(),
+    language: z.string(),
+    currency: z.string(),
+    about: z.string(),
+    shipping: z.string(),
+    url: z.string(),
+    shopUrl: z.string(),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
     const info = {
