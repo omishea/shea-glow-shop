@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "shea-glow-shop",
+      "version": "0.1.0",
+      "title": "Shea Glow Shop"
+    },
+    "tools": [
+      {
+        "name": "store_info",
+        "title": "Store information",
+        "description": "Get general information about the Shea Org webshop: what it sells, shipping policy and useful links.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "about": {
+              "type": "string"
+            },
+            "shipping": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "shopUrl": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "language",
+            "currency",
+            "about",
+            "shipping",
+            "url",
+            "shopUrl"
+          ]
+        }
+      },
+      {
+        "name": "list_products",
+        "title": "List products",
+        "description": "List the shea butter products sold in the Shea Org webshop, with price, availability and product page URL.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limit": {
+              "description": "How many products to return (default 20).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            },
+            "query": {
+              "description": "Optional Shopify search query to filter products, e.g. 'sheasmör'.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "products": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {}
+              }
+            }
+          },
+          "required": [
+            "products"
+          ]
+        }
+      },
+      {
+        "name": "get_product",
+        "title": "Get product details",
+        "description": "Get full details for one product by its handle: description, images, options and every purchasable variant with price and stock status.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "handle": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The product handle, e.g. 'pure-shea-butter-beige-organic-unrefined'."
+            }
+          },
+          "required": [
+            "handle"
+          ]
+        },
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "product": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {}
+            }
+          },
+          "required": [
+            "product"
+          ]
+        }
+      }
+    ]
+  }
+}
