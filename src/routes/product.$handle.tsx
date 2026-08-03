@@ -195,13 +195,35 @@ function ProductPage() {
         ) : (
           <>
             <div className="grid gap-12 md:grid-cols-2">
-              <div className="bg-muted overflow-hidden rounded-3xl">
-                {image && (
-                  <img
-                    src={image.url}
-                    alt={image.altText ?? product.node.title}
-                    className="h-full w-full object-cover"
-                  />
+              <div className="space-y-4">
+                <div className="bg-muted aspect-square overflow-hidden rounded-3xl">
+                  {image && (
+                    <img
+                      src={image.url}
+                      alt={image.altText ?? product.node.title}
+                      className="h-full w-full object-cover"
+                    />
+                  )}
+                </div>
+                {images.length > 1 && (
+                  <div className="flex gap-3 overflow-x-auto pb-1">
+                    {images.map((img, i) => (
+                      <button
+                        key={img.node.url}
+                        onClick={() => setImageIndex(i)}
+                        aria-label={`Visa bild ${i + 1}`}
+                        className={`bg-muted h-20 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition-colors ${
+                          i === imageIndex ? "border-primary" : "border-transparent"
+                        }`}
+                      >
+                        <img
+                          src={img.node.url}
+                          alt={img.node.altText ?? `${product.node.title} bild ${i + 1}`}
+                          className="h-full w-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
                 )}
               </div>
               <div className="space-y-6">
@@ -216,9 +238,8 @@ function ProductPage() {
                         product.node.priceRange.minVariantPrice.currencyCode,
                       )}
                 </p>
-                <p className="text-muted-foreground">
-                  Oraffinerat, vildskördat sheasmör av Grade A. En enda ingrediens, inget annat.
-                </p>
+                <p className="text-muted-foreground">{content.tagline}</p>
+
 
                 {variants.length > 1 && (
                   <div className="space-y-2">
