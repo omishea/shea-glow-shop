@@ -140,17 +140,19 @@ function ProductPage() {
   const addItem = useCartStore((s) => s.addItem);
   const isAdding = useCartStore((s) => s.isLoading);
   const [variantIndex, setVariantIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
   const [activeSection, setActiveSection] = useState<string>(sections[0].id);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const product = Route.useLoaderData() as ShopifyProduct | null;
+  const { handle } = Route.useParams();
+  const content = getProductContent(handle);
   const isLoading = false;
-
-
 
   const variants = product?.node.variants.edges ?? [];
   const variant = variants[variantIndex]?.node;
-  const image = product?.node.images.edges[0]?.node;
+  const images = product?.node.images.edges ?? [];
+  const image = images[imageIndex]?.node ?? images[0]?.node;
 
   const scrollToSection = (id: string) => {
     const el = sectionRefs.current[id];
