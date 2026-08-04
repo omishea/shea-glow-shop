@@ -5,6 +5,10 @@ import { useCartStore } from "@/stores/cartStore";
 import { formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
 
+function cleanProductDescription(description: string): string {
+  return description.replace(/^\s*produktbeskrivning\s*[:.–-]?\s*/i, "").trim();
+}
+
 export function ProductCard({ product }: { product: ShopifyProduct }) {
   const addItem = useCartStore((state) => state.addItem);
   const isLoading = useCartStore((state) => state.isLoading);
@@ -42,7 +46,9 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         <Link to="/product/$handle" params={{ handle: product.node.handle }}>
           <h3 className="font-serif text-lg leading-snug">{product.node.title}</h3>
         </Link>
-        <p className="text-muted-foreground line-clamp-2 text-sm">{product.node.description}</p>
+        <p className="text-muted-foreground line-clamp-2 text-sm">
+          {cleanProductDescription(product.node.description)}
+        </p>
         <div className="flex items-center justify-between pt-1">
           <span className="text-base font-semibold">
             {formatPrice(
