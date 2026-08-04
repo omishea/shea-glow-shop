@@ -311,7 +311,7 @@ function ProductPage() {
                   }}
                   className="scroll-mt-32"
                 >
-                  <h2 className="font-serif mb-4 text-2xl tracking-tight">Produktbeskrivning</h2>
+                  
                   <div className="text-muted-foreground max-w-3xl whitespace-pre-line leading-relaxed">
                     {cleanDescription(product.node.description) || <p>{content.tagline}</p>}
                   </div>
