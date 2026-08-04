@@ -1,3 +1,4 @@
+// Standalone fallback page — no app imports, so it renders even if the app fails to boot.
 export function renderErrorPage(): string {
   return `<!doctype html>
 <html lang="en">
