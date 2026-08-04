@@ -72,7 +72,7 @@ function Index() {
         <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-16 pb-8 md:grid-cols-2 md:pt-24 md:pb-12">
           <div className="space-y-6">
             <p className="text-primary text-xs tracking-[0.25em] uppercase">
-              100 % Naturligt · Grade A
+              100 % Naturligt
             </p>
             <h1 className="font-serif text-5xl leading-[1.05] tracking-tight md:text-6xl">
               Naturliga produkter, noga utvalda för dig.
@@ -88,12 +88,6 @@ function Index() {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center rounded-full px-7 text-sm font-medium transition-colors"
               >
                 Upptäck våra produkter
-              </a>
-              <a
-                href="#about"
-                className="border-border hover:bg-accent inline-flex h-11 items-center rounded-full border px-7 text-sm font-medium transition-colors"
-              >
-                Varför oraffinerat
               </a>
             </div>
           </div>
