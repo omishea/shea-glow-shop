@@ -6,6 +6,7 @@
 export type ProductContent = {
   tagline: string;
   metaSummary: string;
+  description?: { intro: string; benefits: string[] };
   usage: string[];
   ingredients: { highlight: string; body: string };
   shippingIntro: string;
@@ -31,6 +32,18 @@ const CONTENT: Record<string, ProductContent> = {
   "pure-shea-butter-beige-organic-unrefined": {
     tagline: "Oraffinerat, vildskördat sheasmör av Grade A. En enda ingrediens, inget annat.",
     metaSummary: "oraffinerat, vildskördat sheasmör av Grade A från Shea Org",
+    description: {
+      intro:
+        "Vårt ekologiska sheasmör kommer från Ghana, där sheanötterna skördas enligt traditionella metoder och förädlas varsamt för att bevara sin naturliga kvalitet. Sheasmöret är 100 % rent, kallpressat och oraffinerat, vilket hjälper till att bevara dess naturliga vitaminer och näringsrika fettsyror. Rikt på vitaminerna A och E vårdar, återfuktar och skyddar det både hud och hår på djupet – helt utan tillsatser, parfym eller kemikalier.",
+      benefits: [
+        "Intensivt återfuktande för torr och känslig hud.",
+        "Hjälper till att lugna irritation och stödjer hudens naturliga barriär.",
+        "Bidrar till ökad elasticitet och en mjuk, smidig hud.",
+        "Vårdar torrt och skadat hår samt ger mjukhet, glans och följsamhet.",
+        "100 % naturligt och fritt från tillsatser, parfym och kemikalier.",
+        "Passar alla hud- och hårtyper.",
+      ],
+    },
     usage: [
       "Värm en liten mängd mellan handflatorna tills den smälter.",
       "Massera in i fuktig hud efter dusch eller bad.",
