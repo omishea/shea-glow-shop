@@ -78,8 +78,9 @@ function Index() {
               Naturliga produkter, noga utvalda för dig.
             </h1>
             <p className="text-muted-foreground max-w-md text-lg">
-              Vildskördat, kallpressat och aldrig raffinerat. En enda ingrediens som mjukgör torr
-              hud, lugnar irritation och räcker hela säsongen.
+              Välkommen till en plats där natur och kvalitet möts. Vi erbjuder noggrant utvalda
+              produkter med rena ingredienser som hjälper dig att vårda din kropp, stärka ditt
+              välmående och skapa hållbara rutiner för en hälsosammare vardag.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
