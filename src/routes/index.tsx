@@ -5,7 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { useCartSync } from "@/hooks/useCartSync";
 import { Loader2, Leaf, Droplets, Sun } from "lucide-react";
-import heroImage from "@/assets/hero-shea.jpg";
+import logoImage from "@/assets/Shea org logo.png";
 
 const SITE_URL = "https://shea-glow-shop.lovable.app";
 const OG_IMAGE = `${SITE_URL}/og-cover.jpg`;
@@ -96,13 +96,13 @@ function Index() {
               </a>
             </div>
           </div>
-          <div className="overflow-hidden rounded-3xl">
+          <div className="aspect-[1600/1104] overflow-hidden rounded-3xl bg-[#fbf5ec]">
             <img
-              src={heroImage}
-              alt="Rent oraffinerat sheasmör i en keramikskål bredvid knäckta sheanötter"
-              width={1600}
-              height={1104}
-              className="h-full w-full object-cover"
+              src={logoImage}
+              alt="Shea Org logotyp"
+              width={1254}
+              height={1254}
+              className="h-full w-full object-contain"
             />
           </div>
         </section>
