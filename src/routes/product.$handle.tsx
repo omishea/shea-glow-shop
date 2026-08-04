@@ -67,7 +67,8 @@ export const Route = createFileRoute("/product/$handle")({
     const title = product ? `${product.node.title} — Shea Org` : `${fallbackName} — Shea Org`;
     const description = product
       ? truncate(
-          cleanDescription(product.node.description) ||
+          content.description?.intro ||
+            cleanDescription(product.node.description) ||
             `Köp ${product.node.title}: ${content.metaSummary}.`,
         )
       : `Köp ${fallbackName}: ${content.metaSummary}.`;
@@ -313,9 +314,21 @@ function ProductPage() {
                   className="scroll-mt-32"
                 >
                   
-                  <div className="text-muted-foreground max-w-3xl whitespace-pre-line leading-relaxed">
-                    {cleanDescription(product.node.description) || <p>{content.tagline}</p>}
-                  </div>
+                  {content.description ? (
+                    <div className="text-muted-foreground max-w-3xl leading-relaxed">
+                      <p>{content.description.intro}</p>
+                      <h2 className="text-foreground mt-8 text-xl font-semibold">Fördelar</h2>
+                      <ul className="mt-4 list-disc space-y-2 pl-6">
+                        {content.description.benefits.map((benefit) => (
+                          <li key={benefit}>{benefit}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <div className="text-muted-foreground max-w-3xl whitespace-pre-line leading-relaxed">
+                      {cleanDescription(product.node.description) || <p>{content.tagline}</p>}
+                    </div>
+                  )}
                 </section>
 
                 <section
@@ -345,34 +358,3 @@ function ProductPage() {
                     <span className="text-foreground font-medium">
                       {content.ingredients.highlight}
                     </span>{" "}
-                    {content.ingredients.body}
-                  </p>
-                </section>
-
-                <section
-                  id="leverans"
-                  ref={(el) => {
-                    sectionRefs.current["leverans"] = el;
-                  }}
-                  className="scroll-mt-32"
-                >
-                  <h2 className="font-serif mb-4 text-2xl tracking-tight">Leverans</h2>
-                  <div className="text-muted-foreground max-w-3xl space-y-3 leading-relaxed">
-                    <p>{content.shippingIntro}</p>
-
-                    <ul className="list-disc space-y-1 pl-5">
-                      <li>Leveranstid: 2–5 arbetsdagar inom Sverige.</li>
-                      <li>Fri frakt</li>
-                      <li>Du får ett spårningsnummer när paketet har skickats.</li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </>
-        )}
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
