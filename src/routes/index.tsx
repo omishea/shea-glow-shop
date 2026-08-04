@@ -69,7 +69,7 @@ function Index() {
       <SiteHeader />
 
       <main>
-        <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:py-24">
+        <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-16 pb-8 md:grid-cols-2 md:pt-24 md:pb-12">
           <div className="space-y-6">
             <p className="text-primary text-xs tracking-[0.25em] uppercase">
               100 % Naturligt · Grade A
@@ -107,7 +107,7 @@ function Index() {
           </div>
         </section>
 
-        <section id="shop" className="mx-auto max-w-6xl px-6 py-16">
+        <section id="shop" className="mx-auto max-w-6xl px-6 pt-8 pb-16">
           <div className="mb-10 flex items-end justify-between">
             <h2 className="font-serif text-3xl tracking-tight md:text-4xl">Produkter</h2>
             <p className="text-muted-foreground text-sm">Skickas från vår egen butik</p>
