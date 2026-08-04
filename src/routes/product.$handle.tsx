@@ -20,9 +20,10 @@ const sections = [
 
 function cleanDescription(description: string | null): string {
   if (!description) return "";
-  const usageIndex = description.toLowerCase().indexOf("användning");
-  if (usageIndex === -1) return description;
-  return description.slice(0, usageIndex).trim();
+  let text = description.replace(/^\s*produktbeskrivning\s*:?\s*/i, "");
+  const usageIndex = text.toLowerCase().indexOf("användning");
+  if (usageIndex !== -1) text = text.slice(0, usageIndex);
+  return text.trim();
 }
 
 function truncate(text: string, max = 155): string {
