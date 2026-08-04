@@ -75,7 +75,7 @@ function Index() {
               100 % Naturligt · Grade A
             </p>
             <h1 className="font-serif text-5xl leading-[1.05] tracking-tight md:text-6xl">
-              Naturliga produkter, noga utvalda för dig.
+              Naturliga produkter Noga utvalda för dig
             </h1>
             <p className="text-muted-foreground max-w-md text-lg">
               Vildskördat, kallpressat och aldrig raffinerat. En enda ingrediens som mjukgör torr
