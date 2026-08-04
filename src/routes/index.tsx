@@ -5,7 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { useCartSync } from "@/hooks/useCartSync";
 import { Loader2, Leaf, Droplets, Sun } from "lucide-react";
-import logoImage from "@/assets/Shea org logo.png";
+import logoImage from "@/assets/shea-org-logo-transparent.png";
 
 const SITE_URL = "https://shea-glow-shop.lovable.app";
 const OG_IMAGE = `${SITE_URL}/og-cover.jpg`;
@@ -96,7 +96,7 @@ function Index() {
               </a>
             </div>
           </div>
-          <div className="aspect-[1600/1104] overflow-hidden rounded-3xl bg-[#fbf5ec]">
+          <div className="aspect-[1600/1104] overflow-hidden rounded-3xl">
             <img
               src={logoImage}
               alt="Shea Org logotyp"
