@@ -102,7 +102,7 @@ function Index() {
               alt="Shea Org logotyp"
               width={1254}
               height={1254}
-              className="h-full w-full scale-[1.35] object-contain"
+              className="h-full w-full scale-[1.25] object-contain"
             />
           </div>
         </section>
