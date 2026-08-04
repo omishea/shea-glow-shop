@@ -87,7 +87,7 @@ function Index() {
                 href="#shop"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center rounded-full px-7 text-sm font-medium transition-colors"
               >
-                Upptäck Kollektionen
+                Upptäck våra produkter
               </a>
               <a
                 href="#about"
