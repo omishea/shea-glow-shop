@@ -61,20 +61,34 @@ const CONTENT: Record<string, ProductContent> = {
   "australian-pastel-pink-clay": {
     tagline: "Australisk pastellrosa lera. Mild ansiktsmask för stressad och mogen hud.",
     metaSummary: "australisk pastellrosa lera – mild ansiktsmask för stressad och mogen hud",
+    description: {
+      intro:
+        "Upptäck kraften i Australisk Rosa Lera, en naturligt mineralrik premiumlera som utvinns i Australien och varsamt soltorkas för att bevara sina värdefulla egenskaper. Denna lyxiga kosmetiska lera är ett uppskattat val inom naturlig hudvård och passar perfekt för ansiktsmasker, kroppsinpackningar, badprodukter, tvål och andra DIY-hudvårdsprodukter. Den silkeslena leran rengör huden på djupet, absorberar orenheter och överflödigt talg samtidigt som den hjälper till att återfukta och förbättra hudens spänst. Resultatet är en mjukare hud med jämnare hudstruktur och en naturlig, hälsosam lyster. Passar alla hudtyper – särskilt känslig, torr, stressad och mogen hud.",
+      benefits: [
+        "Djuprengör huden och avlägsnar orenheter.",
+        "Exfolierar skonsamt för en jämnare hudstruktur.",
+        "Återfuktar och hjälper huden att kännas mjuk och smidig.",
+        "Bidrar till förbättrad elasticitet och en fräsch lyster.",
+        "Rik på naturliga mineraler såsom kalium, kalcium, magnesium och koppar.",
+        "100 % naturlig kosmetisk lera, fri från parfym, färgämnen och onödiga tillsatser.",
+        "Perfekt för ansiktsmasker, kroppsinpackningar, badpulver, handgjorda tvålar, DIY-hudvård och spa-behandlingar hemma.",
+      ],
+    },
     usage: [
-      "Blanda 1 tsk lera med lika delar vatten, hydrolat eller växtolja till en slät kräm.",
-      "Applicera ett jämnt lager på ren, torr hud och undvik ögonpartiet.",
-      "Låt sitta 5–10 minuter — skölj av innan masken torkar helt.",
-      "Skölj av med ljummet vatten och avsluta med din vanliga fuktkräm.",
-      "Använd 1–2 gånger i veckan. Gör ett test på en liten hudyta först.",
+      "Ansiktsmask: blanda 1 msk lera med 2 msk vatten till en jämn pasta. Tillsätt gärna 1 tsk jojoba-, mandel- eller annan vegetabilisk olja för extra återfuktning.",
+      "Applicera ett jämnt lager på rengjord hud och låt verka i 8–10 minuter — låt inte masken torka helt.",
+      "Skölj av med ljummet vatten och avsluta med en återfuktande ansiktskräm.",
+      "Kroppsinpackning: blanda leran med vatten till krämig konsistens och applicera på önskat område. Låt verka 10–15 minuter och skölj av i duschen med cirkulära rörelser.",
+      "Undvik kontakt med ögon och andra känsliga områden.",
     ],
     ingredients: {
-      highlight: "100 % Kaolin (australisk pastellrosa lera)",
-      body: "Ingen parfym, inga konserveringsmedel, inga färgämnen och inga mineraloljor. Endast ren, naturligt utvunnen lera.",
+      highlight: "100 % Australisk Rosa Lera",
+      body: "(Australian Pink Clay). Ingen parfym, inga konserveringsmedel, inga färgämnen och inga mineraloljor. Endast ren, naturligt utvunnen lera.",
     },
     shippingIntro:
       "Vi skickar din lera inom 1–2 arbetsdagar. Leveransen sker direkt från vårt lager med pålitliga fraktpartners.",
   },
+
 };
 
 export function getProductContent(handle: string): ProductContent {
