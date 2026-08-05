@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2, ArrowLeft, Package, Leaf, Truck, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { getProductContent } from "@/lib/product-content";
+import { splitDescriptionHtml } from "@/lib/shopify-description";
 
 const SITE_URL = "https://shea-glow-shop.lovable.app";
 
@@ -149,6 +150,7 @@ function ProductPage() {
   const product = Route.useLoaderData() as ShopifyProduct | null;
   const { handle } = Route.useParams();
   const content = getProductContent(handle);
+  const shopifySections = splitDescriptionHtml(product?.node.descriptionHtml);
   const isLoading = false;
 
   const variants = product?.node.variants.edges ?? [];
