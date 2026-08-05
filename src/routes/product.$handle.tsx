@@ -313,8 +313,12 @@ function ProductPage() {
                   }}
                   className="scroll-mt-32"
                 >
-                  
-                  {content.description ? (
+                  {shopifySections?.description ? (
+                    <div
+                      className="shopify-richtext text-muted-foreground max-w-3xl leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: shopifySections.description }}
+                    />
+                  ) : content.description ? (
                     <div className="text-muted-foreground max-w-3xl leading-relaxed">
                       <p>{content.description.intro}</p>
                       <h2 className="text-foreground mt-8 text-xl font-semibold">Fördelar</h2>
@@ -339,11 +343,18 @@ function ProductPage() {
                   className="scroll-mt-32"
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Användning</h2>
-                  <ul className="text-muted-foreground max-w-3xl list-disc space-y-2 pl-5 leading-relaxed">
-                    {content.usage.map((step) => (
-                      <li key={step}>{step}</li>
-                    ))}
-                  </ul>
+                  {shopifySections?.usage ? (
+                    <div
+                      className="shopify-richtext text-muted-foreground max-w-3xl leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: shopifySections.usage }}
+                    />
+                  ) : (
+                    <ul className="text-muted-foreground max-w-3xl list-disc space-y-2 pl-5 leading-relaxed">
+                      {content.usage.map((step) => (
+                        <li key={step}>{step}</li>
+                      ))}
+                    </ul>
+                  )}
                 </section>
 
                 <section
@@ -354,12 +365,19 @@ function ProductPage() {
                   className="scroll-mt-32"
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Ingredienser</h2>
-                  <p className="text-muted-foreground max-w-3xl leading-relaxed">
-                    <span className="text-foreground font-medium">
-                      {content.ingredients.highlight}
-                    </span>{" "}
-                    {content.ingredients.body}
-                  </p>
+                  {shopifySections?.ingredients ? (
+                    <div
+                      className="shopify-richtext text-muted-foreground max-w-3xl leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: shopifySections.ingredients }}
+                    />
+                  ) : (
+                    <p className="text-muted-foreground max-w-3xl leading-relaxed">
+                      <span className="text-foreground font-medium">
+                        {content.ingredients.highlight}
+                      </span>{" "}
+                      {content.ingredients.body}
+                    </p>
+                  )}
                 </section>
 
                 <section
@@ -370,16 +388,26 @@ function ProductPage() {
                   className="scroll-mt-32"
                 >
                   <h2 className="font-serif mb-4 text-2xl tracking-tight">Leverans</h2>
-                  <p className="text-muted-foreground max-w-3xl leading-relaxed">
-                    {content.shippingIntro}
-                  </p>
-                  <ul className="text-muted-foreground mt-4 max-w-3xl list-disc space-y-2 pl-5 leading-relaxed">
-                    <li>Fri frakt</li>
-                    <li>Leveranstid 2–4 arbetsdagar inom Sverige.</li>
-                    <li>Spårbar frakt med avisering via e-post.</li>
-                  </ul>
+                  {shopifySections?.shipping ? (
+                    <div
+                      className="shopify-richtext text-muted-foreground max-w-3xl leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: shopifySections.shipping }}
+                    />
+                  ) : (
+                    <>
+                      <p className="text-muted-foreground max-w-3xl leading-relaxed">
+                        {content.shippingIntro}
+                      </p>
+                      <ul className="text-muted-foreground mt-4 max-w-3xl list-disc space-y-2 pl-5 leading-relaxed">
+                        <li>Fri frakt</li>
+                        <li>Leveranstid 2–4 arbetsdagar inom Sverige.</li>
+                        <li>Spårbar frakt med avisering via e-post.</li>
+                      </ul>
+                    </>
+                  )}
                 </section>
               </div>
+
             </div>
           </>
         )}
