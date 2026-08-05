@@ -13,10 +13,10 @@ export function SiteHeader() {
             Butik
           </a>
           <a href="/#about" className="hover:text-foreground transition-colors">
-            Om oss
+            Fördelar
           </a>
           <a href="/#ritual" className="hover:text-foreground transition-colors">
-            Ritual
+            Om oss
           </a>
         </nav>
         <CartDrawer />
@@ -30,7 +30,7 @@ export function SiteFooter() {
     <footer className="border-border/60 mt-24 border-t">
       <div className="text-muted-foreground mx-auto flex max-w-6xl flex-col gap-2 px-6 py-10 text-sm sm:flex-row sm:items-center sm:justify-between">
         <p className="font-serif text-foreground text-base">Shea Org</p>
-        <p>Oraffinerat, vildskördat sheasmör. Inget annat.</p>
+        <p>Naturliga produkter för hud, hår och välmående.</p>
       </div>
     </footer>
   );

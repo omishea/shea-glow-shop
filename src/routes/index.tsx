@@ -4,7 +4,7 @@ import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/ProductCard";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { useCartSync } from "@/hooks/useCartSync";
-import { Loader2, Leaf, Droplets, Sun } from "lucide-react";
+import { Loader2, Leaf, Truck, ShieldCheck } from "lucide-react";
 import logoImage from "@/assets/shea-org-logo-transparent.png";
 
 const SITE_URL = "https://shea-glow-shop.lovable.app";
@@ -130,18 +130,18 @@ function Index() {
             {[
               {
                 icon: Leaf,
-                title: "Vildskördat",
-                body: "Nötter plockade för hand, aldrig odlade.",
+                title: "Rena ingredienser",
+                body: "Noga utvalda råvaror utan onödiga tillsatser.",
               },
               {
-                icon: Droplets,
-                title: "Kallpressat",
-                body: "Ingen värme, inga lösningsmedel, inga blekmedel.",
+                icon: Truck,
+                title: "Fri frakt",
+                body: "Vi skickar alla beställningar fraktfritt.",
               },
               {
-                icon: Sun,
-                title: "Oraffinerat Grade A",
-                body: "Vitamin A, E och F helt bevarade.",
+                icon: ShieldCheck,
+                title: "Trygg handel",
+                body: "Säker betalning och snabb kundservice.",
               },
             ].map(({ icon: Icon, title, body }) => (
               <div key={title} className="space-y-3">
@@ -153,13 +153,15 @@ function Index() {
           </div>
         </section>
 
-        <section id="ritual" className="mx-auto max-w-3xl px-6 pb-8 text-center">
-          <h2 className="font-serif text-3xl tracking-tight">Ritualen</h2>
+        <section id="ritual" className="mx-auto max-w-3xl px-6 py-16 text-center">
+          <h2 className="font-serif text-3xl tracking-tight">Om Shea Org</h2>
           <p className="text-muted-foreground mt-4">
-            Värm en liten mängd mellan handflatorna tills den smälter och massera in i fuktig hud.
-            Bäst på armbågar, hälar, händer och överallt där vintern varit hård.
+            Vi handplockar naturliga produkter för hud, hår och välmående — från oraffinerat
+            sheasmör till mineralrik lera. Litet sortiment, hög kvalitet och full transparens
+            kring vad varje produkt innehåller.
           </p>
         </section>
+
       </main>
 
       <SiteFooter />
