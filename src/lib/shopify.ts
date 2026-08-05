@@ -10,6 +10,7 @@ export interface ShopifyProduct {
     id: string;
     title: string;
     description: string;
+    descriptionHtml: string;
     handle: string;
     priceRange: {
       minVariantPrice: { amount: string; currencyCode: string };
@@ -40,6 +41,7 @@ export const STOREFRONT_QUERY = `
           id
           title
           description
+          descriptionHtml
           handle
           priceRange { minVariantPrice { amount currencyCode } }
           images(first: 5) { edges { node { url altText } } }
@@ -67,6 +69,7 @@ export const PRODUCT_BY_HANDLE_QUERY = `
       id
       title
       description
+      descriptionHtml
       handle
       priceRange { minVariantPrice { amount currencyCode } }
       images(first: 5) { edges { node { url altText } } }
