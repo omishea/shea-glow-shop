@@ -13,10 +13,10 @@ export function SiteHeader() {
             Butik
           </a>
           <a href="/#about" className="hover:text-foreground transition-colors">
-            Om oss
+            Fördelar
           </a>
           <a href="/#ritual" className="hover:text-foreground transition-colors">
-            Ritual
+            Om oss
           </a>
         </nav>
         <CartDrawer />
