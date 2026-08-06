@@ -232,8 +232,13 @@ function ProductPage() {
               </div>
               <div className="space-y-6">
                 <h1 className="font-serif text-4xl leading-tight tracking-tight">
-                  {product.node.title}
+                  {product.node.handle === "pure-shea-butter-beige-organic-unrefined"
+                    ? "Ekologiskt Sheasmör"
+                    : product.node.title
+                        .replace(/\s*[-–—]\s*för stressad\s*&?\s*mogen hud\s*$/i, "")
+                        .trim()}
                 </h1>
+
                 <p className="text-2xl font-semibold">
                   {variant
                     ? formatPrice(variant.price.amount, variant.price.currencyCode)
