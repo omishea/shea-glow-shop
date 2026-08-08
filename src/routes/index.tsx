@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image:type", content: "image/jpeg" },
       {
         property: "og:image:alt",
-        content: "Oraffinerat sheasmör i en keramikskål bredvid knäckta sheanötter",
+        content: "Shea Org — naturliga produkter för hud, hår och välmående",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: HOME_TITLE },
