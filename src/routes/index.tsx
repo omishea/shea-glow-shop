@@ -9,9 +9,9 @@ import logoImage from "@/assets/shea-org-logo-transparent.png";
 
 const SITE_URL = "https://shea-glow-shop.lovable.app";
 const OG_IMAGE = `${SITE_URL}/og-cover.jpg`;
-const HOME_TITLE = "Shea Org — Oraffinerat vildskördat sheasmör";
+const HOME_TITLE = "Shea Org — Naturliga produkter, noga utvalda för dig";
 const HOME_DESCRIPTION =
-  "Oraffinerat sheasmör av Grade A, vildskördat och kallpressat. En enda ingrediens, inget annat.";
+  "Välkommen till en plats där natur och kvalitet möts. Vi erbjuder noggrant utvalda produkter med rena ingredienser för en hälsosammare vardag.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
